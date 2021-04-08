@@ -122,6 +122,9 @@
 
   // option to show clear selection button
   export let showClear = false;
+  
+  // option to clear the current list of items after selecting an item
+  export let clearListOfItemsAfterSelect = false;
 
   // adds the disabled tag to the HTML input
   export let disabled = false;
@@ -323,6 +326,13 @@
     if (beforeChange(selectedItem, newSelectedItem)) {
       selectedItem = newSelectedItem;
     }
+    
+    if (clearListOfItemsAfterSelect) {
+      listItems = [];
+      filteredListItems = [];
+      clear();
+    }
+    
     return true;
   }
 
